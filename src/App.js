@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/header";
-import Footer from "./components/footer";
 import Tasks from "./components/tasks";
+import axios from "axios";
+
+const api = axios.create({});
 
 class App extends Component {
   state = {
@@ -52,7 +54,6 @@ class App extends Component {
             tasks={this.state.tasks}
           />
         </main>
-        <Footer />
       </React.Fragment>
     );
   }
