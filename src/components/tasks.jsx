@@ -22,12 +22,16 @@ class Tasks extends Component {
     ],
   };
 
+  handleTaskDone = (task) => {
+    console.log(task);
+  };
+
   render() {
     return (
       <div>
         <ul className="list-group">
           {this.state.tasks.map((task) => (
-            <Task key={task.id} task={task} />
+            <Task key={task.id} task={task} onTaskDone={this.handleTaskDone} />
           ))}
         </ul>
       </div>
