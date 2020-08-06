@@ -23,6 +23,7 @@ class App extends Component {
         completed: true,
       },
     ],
+    input: null,
   };
 
   handleTaskDone = (task) => {
@@ -37,6 +38,23 @@ class App extends Component {
     this.setState({ tasks: tasks });
   };
 
+  handleChange = (e) => {
+    this.setState({ input: e.target.value });
+  };
+
+  handleAdd = (title) => {
+    let counter = this.state.tasks.length;
+
+    const task = {
+      id: counter + 1,
+      title: this.state.input,
+      completed: false,
+    };
+
+    const tasks = [...this.state.tasks, task];
+    this.setState({ tasks: tasks });
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -46,6 +64,25 @@ class App extends Component {
           }
         />
         <main className="container">
+          <div className="input-group mb-2 mt-2">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Task Title"
+              aria-label="Task Title"
+              aria-describedby="basic-addon2"
+              onChange={this.handleChange}
+            ></input>
+            <div className="input-group-append">
+              <button
+                className="btn btn-outline-secondary"
+                type="button"
+                onClick={this.handleAdd}
+              >
+                Add
+              </button>
+            </div>
+          </div>
           <Tasks
             onTaskDone={this.handleTaskDone}
             onTaskDelete={this.handleDelete}

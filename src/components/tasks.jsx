@@ -5,18 +5,16 @@ class Tasks extends Component {
   render() {
     const { tasks, onTaskDone, onTaskDelete } = this.props;
     return (
-      <div>
-        <ul className="list-group">
-          {tasks.map((task) => (
-            <Task
-              key={task.id}
-              task={task}
-              onTaskDone={onTaskDone}
-              onTaskDelete={onTaskDelete}
-            />
-          ))}
-        </ul>
-      </div>
+      <ul className="list-group">
+        {tasks.map((task) => (
+          <Task
+            key={task.id}
+            task={task}
+            onTaskDone={onTaskDone}
+            onTaskDelete={onTaskDelete}
+          />
+        ))}
+      </ul>
     );
   }
 }
