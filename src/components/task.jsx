@@ -12,7 +12,7 @@ class Task extends Component {
   }
 
   render() {
-    const { task, onTaskDone } = this.props;
+    const { task, onTaskDone, onTaskDelete } = this.props;
 
     return (
       <li className="list-group-item">
@@ -26,7 +26,12 @@ class Task extends Component {
         <span className="taskTitle" style={this.handleCheckBox(task.completed)}>
           {task.title}
         </span>
-        <button className="btn btn-sm btn-danger m-2">Delete</button>
+        <button
+          className="btn btn-sm btn-danger m-2"
+          onClick={() => onTaskDelete(task)}
+        >
+          Delete
+        </button>
       </li>
     );
   }

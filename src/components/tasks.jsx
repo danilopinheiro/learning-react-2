@@ -23,13 +23,15 @@ class Tasks extends Component {
   };
 
   handleTaskDone = (task) => {
-    //console.log("execute");
     const tasks = [...this.state.tasks];
     const index = tasks.indexOf(task);
     tasks[index].completed = !task.completed;
     this.setState({ tasks: tasks });
+  };
 
-    //console.log("tasks", this.state.tasks);
+  handleDelete = (task) => {
+    const tasks = this.state.tasks.filter((t) => t.id !== task.id);
+    this.setState({ tasks: tasks });
   };
 
   render() {
@@ -37,7 +39,12 @@ class Tasks extends Component {
       <div>
         <ul className="list-group">
           {this.state.tasks.map((task) => (
-            <Task key={task.id} task={task} onTaskDone={this.handleTaskDone} />
+            <Task
+              key={task.id}
+              task={task}
+              onTaskDone={this.handleTaskDone}
+              onTaskDelete={this.handleDelete}
+            />
           ))}
         </ul>
       </div>
