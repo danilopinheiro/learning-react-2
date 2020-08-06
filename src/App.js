@@ -7,8 +7,10 @@ import Tasks from "./components/tasks";
 function App() {
   return (
     <React.Fragment>
-      <Header />
-      <Tasks />
+      <Header totalTasks={20} />
+      <main className="container">
+        <Tasks />
+      </main>
       <Footer />
     </React.Fragment>
   );
