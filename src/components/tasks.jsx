@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Task from "./task";
 
 class Tasks extends Component {
   state = {
@@ -21,28 +22,15 @@ class Tasks extends Component {
     ],
   };
 
-  handleTaskDone = () => {
-    console.log(this.props);
-  };
-
   render() {
     return (
-      <React.Fragment>
+      <div>
         <ul className="list-group">
-          {this.state.tasks.map((t) => (
-            <li className="list-group-item" key={t.id}>
-              <input
-                onChange={this.handleTaskDone}
-                className="m-2"
-                type="checkbox"
-                aria-label="Task done"
-              ></input>
-              {t.title}
-              <button className="btn btn-sm btn-danger m-2">Delete</button>
-            </li>
+          {this.state.tasks.map((task) => (
+            <Task key={task.id} task={task} />
           ))}
         </ul>
-      </React.Fragment>
+      </div>
     );
   }
 }
