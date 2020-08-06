@@ -17,13 +17,19 @@ class Tasks extends Component {
       {
         id: 3,
         title: "Rendering project 1",
-        completed: false,
+        completed: true,
       },
     ],
   };
 
   handleTaskDone = (task) => {
-    console.log(task);
+    //console.log("execute");
+    const tasks = [...this.state.tasks];
+    const index = tasks.indexOf(task);
+    tasks[index].completed = !task.completed;
+    this.setState({ tasks: tasks });
+
+    //console.log("tasks", this.state.tasks);
   };
 
   render() {
