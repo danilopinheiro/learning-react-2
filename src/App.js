@@ -17,8 +17,11 @@ class App extends Component {
 
   constructor() {
     super();
-    api
-      //.get("/")
+    this.getTasks();
+  }
+
+  getTasks = async () => {
+    await api
       .get("")
       .then((res) => {
         this.setState({ tasks: res.data });
@@ -26,7 +29,7 @@ class App extends Component {
       .catch(function (error) {
         console.log(error);
       });
-  }
+  };
 
   handleTaskDone = (task) => {
     const tasks = [...this.state.tasks];
