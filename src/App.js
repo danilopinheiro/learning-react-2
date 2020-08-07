@@ -3,28 +3,31 @@ import "./App.css";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Tasks from "./components/tasks";
+import axios from "axios";
+
+const api = axios.create({
+  //baseURL: "https://my-json-server.typicode.com/danilopinheiro/data/db",
+  baseURL: "http://localhost:3000/ds.json",
+});
 
 class App extends Component {
   state = {
-    tasks: [
-      {
-        id: 1,
-        title: "Morning workout",
-        completed: true,
-      },
-      {
-        id: 2,
-        title: "Breakfast",
-        completed: false,
-      },
-      {
-        id: 3,
-        title: "Rendering project 1",
-        completed: true,
-      },
-    ],
+    tasks: [],
     input: null,
   };
+
+  constructor() {
+    super();
+    api
+      //.get("/")
+      .get("")
+      .then((res) => {
+        this.setState({ tasks: res.data });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   handleTaskDone = (task) => {
     const tasks = [...this.state.tasks];
@@ -56,6 +59,7 @@ class App extends Component {
   };
 
   render() {
+    console.log("render", this.state);
     return (
       <React.Fragment>
         <Header
