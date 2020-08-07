@@ -38,6 +38,8 @@ class App extends Component {
   handleDelete = (task) => {
     const tasks = this.state.tasks.filter((t) => t.id !== task.id);
     this.setState({ tasks: tasks });
+
+    console.log("delete", tasks);
   };
 
   handleChange = (e) => {
@@ -45,20 +47,18 @@ class App extends Component {
   };
 
   handleAdd = (title) => {
-    let id = this.state.tasks.length + 1;
+    const tasks = [...this.state.tasks];
 
     const task = {
-      id: id,
+      id: tasks && tasks.length ? tasks.pop().id + 1 : 1,
       title: this.state.input,
       completed: false,
     };
 
-    const tasks = [...this.state.tasks, task];
-    this.setState({ tasks: tasks });
+    this.setState({ tasks: [...this.state.tasks, task] });
   };
 
   render() {
-    console.log("render", this.state);
     return (
       <React.Fragment>
         <Header
@@ -67,28 +67,11 @@ class App extends Component {
           }
         />
         <main className="container">
-          <div className="input-group mb-2 mt-2">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Task Title"
-              aria-label="Task Title"
-              aria-describedby="basic-addon2"
-              onChange={this.handleChange}
-            ></input>
-            <div className="input-group-append">
-              <button
-                className="btn btn-outline-secondary"
-                type="button"
-                onClick={this.handleAdd}
-              >
-                Add
-              </button>
-            </div>
-          </div>
           <Tasks
             onTaskDone={this.handleTaskDone}
             onTaskDelete={this.handleDelete}
+            onTaskAdd={this.handleAdd}
+            onInputChange={this.handleChange}
             tasks={this.state.tasks}
           />
         </main>
