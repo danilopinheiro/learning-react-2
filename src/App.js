@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/header";
-import Footer from "./components/footer";
 import Tasks from "./components/tasks";
 import axios from "axios";
 
@@ -46,10 +45,10 @@ class App extends Component {
   };
 
   handleAdd = (title) => {
-    let counter = this.state.tasks.length;
+    let id = this.state.tasks.length + 1;
 
     const task = {
-      id: counter + 1,
+      id: id,
       title: this.state.input,
       completed: false,
     };
@@ -93,7 +92,6 @@ class App extends Component {
             tasks={this.state.tasks}
           />
         </main>
-        <Footer />
       </React.Fragment>
     );
   }
