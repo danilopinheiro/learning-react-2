@@ -17,16 +17,19 @@ class App extends Component {
 
   constructor() {
     super();
-    api
-      //.get("/")
+    this.getTasks();
+  }
+
+  getTasks = async () => {
+    await api
       .get("")
       .then((res) => {
         this.setState({ tasks: res.data });
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch(function (err) {
+        console.log(err);
       });
-  }
+  };
 
   handleTaskDone = (task) => {
     const tasks = [...this.state.tasks];

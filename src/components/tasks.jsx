@@ -16,6 +16,7 @@ class Tasks extends Component {
           <input
             type="text"
             className="form-control"
+            data-testid="form-field"
             placeholder="Task Title"
             aria-label="Task Title"
             aria-describedby="basic-addon2"
@@ -23,6 +24,7 @@ class Tasks extends Component {
           ></input>
           <div className="input-group-append">
             <button
+              data-testid="form-btn"
               className="btn btn-outline-secondary"
               type="button"
               onClick={onTaskAdd}
@@ -33,7 +35,7 @@ class Tasks extends Component {
           </div>
         </div>
 
-        <ul className="list-group">
+        <ul data-testid="form-ul" className="list-group">
           {tasks.map((task) => (
             <Task
               key={task.id}
