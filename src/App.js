@@ -26,8 +26,8 @@ class App extends Component {
       .then((res) => {
         this.setState({ tasks: res.data });
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch(function (err) {
+        console.log(err);
       });
   };
 
