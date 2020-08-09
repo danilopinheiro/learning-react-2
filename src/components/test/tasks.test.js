@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import Tasks from "../tasks";
-import { render, fireEvent, waitForElement } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 
 const tasks = [
   {
@@ -22,21 +22,13 @@ const tasks = [
 
 describe("Tasks component tests", () => {
   it("render task list with text", async () => {
-    const { findByTestId, findByText } = render(
-      <Tasks
-        tasks={tasks}
-        onTaskDone={() => {}}
-        onTaskDelete={() => {}}
-        onTaskAdd={() => {}}
-        onInputChange={() => {}}
-      />
-    );
+    const { findByTestId, findByText } = render(<Tasks tasks={tasks} />);
 
     //find the input
     const fieldNode = await findByTestId("form-field");
 
     //input the text
-    const task = "mindfullness";
+    const task = "running";
     fireEvent.change(fieldNode, { target: { value: task } });
     expect(fieldNode.value).toEqual(task);
 
