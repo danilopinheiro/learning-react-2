@@ -1,18 +1,34 @@
 import React from "react";
+import Tasks from "../tasks";
 import { render, fireEvent } from "@testing-library/react";
 
-import App from "../../App";
+const tasks = [
+  {
+    id: 1,
+    title: "mindfullness",
+    completed: false,
+  },
+  {
+    id: 2,
+    title: "breakfast",
+    completed: false,
+  },
+  {
+    id: 3,
+    title: "running",
+    completed: false,
+  },
+];
 
-describe.skip("Tasks component tests", () => {
-  it("Should add a new task when clicked on add button", async () => {
-    //component rendering
-    const { findByText, findByTestId } = render(<App />);
+describe("Tasks component tests", () => {
+  it("render task list with text", async () => {
+    const { findByTestId, findByText } = render(<Tasks tasks={tasks} />);
 
     //find the input
     const fieldNode = await findByTestId("form-field");
 
     //input the text
-    const task = "mindfullness";
+    const task = "running";
     fireEvent.change(fieldNode, { target: { value: task } });
     expect(fieldNode.value).toEqual(task);
 
