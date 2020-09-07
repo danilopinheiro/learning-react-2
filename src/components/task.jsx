@@ -30,7 +30,7 @@ class Task extends Component {
           className="btn btn-sm btn-danger m-2"
           onClick={() => onTaskDelete(task)}
         >
-          Delete
+          Remove
         </button>
       </li>
     );
