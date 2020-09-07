@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/header";
 import Tasks from "./components/tasks";
 import axios from "axios";
+import Footer from "./components/footer";
 
 const api = axios.create({
   //baseURL: "https://my-json-server.typicode.com/danilopinheiro/data/db",
@@ -78,6 +79,7 @@ class App extends Component {
             tasks={this.state.tasks}
           />
         </main>
+        <Footer></Footer>
       </React.Fragment>
     );
   }
